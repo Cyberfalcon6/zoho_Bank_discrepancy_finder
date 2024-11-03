@@ -1,0 +1,4 @@
+The file with name "lost.xlsx" contains bank transactions that was not found in zoho.
+
+
+and zoho_lost.xlsx contains zoho transactions that were not found in bank statement 
