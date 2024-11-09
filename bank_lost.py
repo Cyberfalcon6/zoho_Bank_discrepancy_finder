@@ -2,8 +2,8 @@ import openpyxl as op
 import collections
 from datetime import datetime
 def generate_bank_report():
-    bs = op.load_workbook("bank_statement.xlsx")
-    zoho = op.load_workbook("zoho_transactions.xlsx")
+    bs = op.load_workbook("inputs/bank_statement.xlsx")
+    zoho = op.load_workbook("inputs/zoho_transactions.xlsx")
     lost = op.load_workbook("lost.xlsx")
 
 
@@ -39,7 +39,7 @@ def generate_bank_report():
         elif(isinstance(bs_date, datetime)):
             current_month = bs_date.month
         elif(not bs_date):
-            print(f"==============Reached the end of the sheet!!==================== \n Generated 'lost.xlsx' as a report {n_transactions}" )
+            print(f"==============Reached the end of the sheet!!==================== \n Generated 'outputs/lost.xlsx' as a report {n_transactions}" )
             break
         else: 
             continue
@@ -90,7 +90,6 @@ def generate_bank_report():
             lost_row += 1
         n_transactions += 1
 
-
-    lost.save("lost.xlsx")
+    lost.save("outputs/lost.xlsx")
 if __name__ == '__main__':
     generate_bank_report()

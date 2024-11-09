@@ -2,8 +2,8 @@ import openpyxl
 from datetime import datetime
 import collections
 def generate_zoho_report():
-    zoho = openpyxl.load_workbook(filename="zoho_transactions.xlsx")
-    bs = openpyxl.load_workbook(filename="bank_statement.xlsx")
+    zoho = openpyxl.load_workbook(filename="inputs/zoho_transactions.xlsx")
+    bs = openpyxl.load_workbook(filename="inputs/bank_statement.xlsx")
 
     zoho_sheet = zoho['sheet1']
     bs_sheet = bs['s']
@@ -88,7 +88,7 @@ def generate_zoho_report():
 
 
 
-    zoho_lost.save("zoho_lost.xlsx")
+    zoho_lost.save("outputs/zoho_lost.xlsx")
 
 if __name__ == '__main__':
     generate_zoho_report()
