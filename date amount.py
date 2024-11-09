@@ -46,26 +46,29 @@ print(f"{zoho_transactions} zoho transactions!")
 
 choice = 1
 
+month = input("Enter the month: ")
+
 choice = int(input("1. Query date\n0.exit\n>>>")) 
 while choice:
     query_date = input("Which date: ")
     if(query_date == "0"):
         break
     if(len(query_date) == 1):
-        query_date = f"2024-09-0{query_date}"
+        query_date = f"2024-0{month}-0{query_date}"
     elif(len(query_date) == 2):
-        query_date = f"2024-09-{query_date}"
+        query_date = f"2024-0{month}-{query_date}"
     else:
         print()
     total = 0
-    for amt in amounts[query_date]:
+    # print(amounts)
+    for amt in sorted(amounts[query_date]):
         print(f"{amt}")
         total += amt
     print(f"Bank Total({query_date}): {total}")
 
-    # print(amounts_zoho)
     total = 0
-    for amt in amounts_zoho[query_date]:
+    # print(amounts_zoho)
+    for amt in sorted(amounts_zoho[query_date]):
         print(f"{amt}")
         total += amt
     print(f"Zoho Total({query_date}): {total}")

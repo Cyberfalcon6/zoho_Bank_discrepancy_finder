@@ -1,11 +1,12 @@
 import openpyxl
+from datetime import datetime
 import collections
 def generate_zoho_report():
     zoho = openpyxl.load_workbook(filename="zoho_transactions.xlsx")
     bs = openpyxl.load_workbook(filename="bank_statement.xlsx")
 
     zoho_sheet = zoho['sheet1']
-    bs_sheet = bs['sheet1']
+    bs_sheet = bs['s']
 
     zoho_lost = openpyxl.load_workbook(filename="zoho_lost.xlsx")
     zoho_found_sheet = zoho_lost['found']
@@ -35,7 +36,7 @@ def generate_zoho_report():
         if(not zoho_date):
             print(f"--------------- Reached The end of the sheet!! ¯\\_( ツ )_/¯  ---------------- {n_transactions} Transactions") 
             break
-        current_month = zoho_date.split('/')[1]
+        current_month = zoho_date.month
         this_transaction = bs_transactions.get(zoho_amount)
         if(zoho_amount in bs_transactions):  # If this zoho amount was found in Bank statement 
             found = False

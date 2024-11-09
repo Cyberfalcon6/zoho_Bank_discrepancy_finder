@@ -11,7 +11,7 @@ def generate_bank_report():
     lost_sheet = lost['lost']
     found_sheet = lost['found']
     found_different_period_sheet = lost['found_different_period']
-    bs_sheet = bs['sheet1']
+    bs_sheet = bs['s']
 
     column = 0
     row = 1
@@ -35,7 +35,7 @@ def generate_bank_report():
 
 
         if(isinstance(bs_date, str)): 
-            current_month = bs_date.split('/')[1]
+            current_month = bs_date.month
         elif(isinstance(bs_date, datetime)):
             current_month = bs_date.month
         elif(not bs_date):
@@ -50,8 +50,8 @@ def generate_bank_report():
             temporary_zoho_tx = None
             for zoho_tx in zoho_transactions[bs_amount][:]:  # looking for all bank statement transactions under the this zoho amount
                 temporary_zoho_tx = zoho_tx
-                print(f"Bank: {current_month} Zoho: {int(zoho_tx['date'].split('/')[1])} {int(zoho_tx['date'].split('/')[1]) == int(current_month)}")
-                if(int(zoho_tx['date'].split('/')[1]) == int(current_month)): # If any of the bank statement transactions is in the current month
+                print(f"Bank: {current_month} Zoho: {int(zoho_tx['date'].month)} {int(zoho_tx['date'].month) == int(current_month)}")
+                if(int(zoho_tx['date'].month) == int(current_month)): # If any of the bank statement transactions is in the current month
                     found_sheet[f"A{found_row}"] = row[0].value
                     found_sheet[f"B{found_row}"] = row[1].value
                     found_sheet[f"C{found_row}"] = row[2].value
